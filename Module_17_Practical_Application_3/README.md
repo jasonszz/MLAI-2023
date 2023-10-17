@@ -1,66 +1,80 @@
 # MLAI-2023
 UC Berkeley Machine Learning and Artificial Intelligence 2023
 
-# Practical Application Assignment 2: What drives the price of a car?
+# Practical Application Assignment 3 (Module 17): Comparing Classifiers
 
-With a given dataset that contains more than 426K cars information, this assignment focuses on identifying what are the key factors that play an important role, when comes to deciding the price of a user car.
+With a given dataset that contains almost 42K input variables information that related with a Portuguese banking institution direct marketing campaigns throught directly phone call to their potential clients, the goal of this project is to build different models (K Nearest Neighbor, Logistic Regression, Decision Trees, and Support Vector Machines) for this classification task (predict if a client will subscribe the deposit, not regarding which amount is retained), and compare each model's performance efficiency.
 
 ## Overview
 
-The provided dataset contains information on 426K cars with multiple atrributes that could potentailly influence the prices of the cars. The goal is to understand what factors make a car more or less expensive. As a result of this analysis, the final report will provide clear recommendations to the client -- a used car dealership -- as to what consumers value in a used car.
+The provided dataset contains information on almost 42k clients information through phone calls with multiple atrributes that could potentailly help to classify whether a client will subscribe the deposit. While performing this classification task, we will also evaluate multiple different models' (clasifiers, including K Nearest Neighbor, Logistic Regression, Decision Trees, and Support Vector Machines) performace with a proper Performance Metric.
 
 The analysis procedure will follow CRISP-DM Framework with standard process in the indestry for data projects.
 
 ## Business Understanding
 
-Unliked the fixed retail price of a new car, the price of a used car could be driven by multiple additional features, such as its overall condition, current driven odometer, title status, etc. As a dealer can act as both Seller and Buyer at the same time, it is crucial to have a used car price prediction model that could assist to identify what are the key factors that play an important role, when comes to deciding the price of a user car.
+According to **Materials and Methods** section of the paper [Here](https://archive.ics.uci.edu/dataset/222/bank+marketing), this dataset collected is related to total 17 campaigns that occurred between May 2008 and November 2010, corresponding to a total of 79354 contacts made.
+
+According the to collected bank direct marketing data, the **Business Objective** here is to increase efficiency (success rate) of more productive campaign method, directed marketing campaigns, with offering attractive long-term deposit subscription, while saving the time and minimizing the cost by reducing the number of contacts that required to make.
 
 ## Data Understanding
 
-Our dataset contains more than 426K cars information. Because the goal is to understand what are the key factor that influence the price of a car, we should really focus on features that are actually coming from the car itself, such as its made of year, its condition, and its odometer, etc.
+Our dataset contains almost 42K clients data throuth phone call contacts. Because the goal is to build different models (K Nearest Neighbor, Logistic Regression, Decision Trees, and Support Vector Machines) for this classification task (predict if a client will subscribe the deposit, not regarding which amount is retained), and compare each model's efficiency, we should define a proper Performance Metric that could cover most importance factor, for exmample, computational cost (in term of time elapsed), model score (in term of Accuracy, Precision, Recall or F1 score from the common metric of Confusion Matrix).
 
-On the other hand, geographical information, such as region and state, which will be considered as "outlier" because if the price is depended on local government's unique policy, then it would be out of slope of this analysis. In addition, because different model of cars will have a different prices which are associated to its unique configuration, comparing the car price based on its model does not seem to be fair, due to lack of information about the detail of the car model configuration in our current dataset; however, in order to cover customers' personal preference, this analysis will keep manufacturer as one of the factor, which make it relatively reasonable especially after removing the model factor.
+In addition, according to the computation result of probability distribution rate of target value 'subscribe' (Count of Clients Subscribed a Term Deposit), this provided dataset is a highly **imbalanced dataset**, with rate of No (False or 0) as 88%, whereas Yes (True or 1) as 11%. This insight will impact the later decision making of model choosing based on the how well does the model handle imbalanced dataset.
+
+Furthermore, after analyzed the data, no **missing data (Null value)** in the dataset; however, due to multiples features contains value as "unknown", This insight will also impact the later decision making of model choosing based on the how well does the model handle missing values.
 
 Here is the list of factors/features that are involed in this analysis:
 
-1. price: Price of the car. Will be used as Prediction target value
-2. id: An unique number to a car from dealership
-3. year: Year of built or Year of model release of the car
-4. manufacturer: manufacturer of the car
-5. model: model of the car (e.g., Toyota, BMW, etc)
-6. condition: condition of the car (e.g., excellent, good, like new, etc.)
-7. cylinders: number of cylinders of the car (e.g., 4 cylinders, 6 cylinders, etc.)
-8. fuel: fuel type of the car (e.g., gas, diesel, etc.)
-9. odometer: number of miles the car has been driven
-10. title_status: title status of the car (e.g., clean, missing, etc.)
-11. transmission: transmission type of the car (e.g., automatic, manual, etc.)
-12. VIN: Vehicle Identification Number of the car (A unique number to a car)
-13. drive: drive type of the car (e.g., fwd, rwd, etc.)
-14. size: size of the car (e.g., compact, mid-size, etc.)
-15. type: type of the car (e.g., SUV, sedan, etc.)
-16. paint_color: color of the car (e.g., Silver, Red, etc.)
-17. state: state where the car is listing to sale
+**bank client data:**
 
-**For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_11_Practical_Application_2/Module_11_prompt_II_JasonSU_v3_Final.ipynb) for full Notebook.**
+1. age (numeric)
+2. job : type of job (categorical features)
+3. marital : marital status (categorical: features)
+4. education (categorical features)
+5. default: has credit in default? (categorical features)
+6. housing: has housing loan? (categorical features)
+7. loan: has personal loan? (categorical features)
+
+**related with the last contact of the current campaign:**
+
+8. contact: contact communication type (categorical features)
+9. month: last contact month of year (categorical features)
+10. day_of_week: last contact day of the week (categorical features)
+11. duration: last contact duration, in seconds (numeric features). Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.
+
+**other attributes:**
+
+12. campaign: number of contacts performed during this campaign and for this client (numeric features)
+13. pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric features; 999 means client was not previously contacted)
+14. previous: number of contacts performed before this campaign and for this client (numeric features)
+15. poutcome: outcome of the previous marketing campaign (categorical features)
+
+**social and economic context attributes:**
+
+16. emp.var.rate: employment variation rate - quarterly indicator (numeric features)
+17. cons.price.idx: consumer price index - monthly indicator (numeric features)
+18. cons.conf.idx: consumer confidence index - monthly indicator (numeric features)
+19. euribor3m: euribor 3 month rate - daily indicator (numeric features)
+20. nr.employed: number of employees - quarterly indicator (numeric features)
+
+**Output variable (desired target):**
+
+21. y - has the client subscribed a term deposit? (binary: 'yes','no')
+
+**For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here]() for full Notebook.**
 
 ## Finding
 
-![Alt text](https://github.com/jasonszz/MLAI-2023/blob/main/Module_11_Practical_Application_2/images/Plot_important_features_from_permutation_importance.png)
 
-Age (difference conversion from Year of the car) and Odometer (of the car) are the top 2 features that have the most impact to the used car prices. This results make sense because in general, car with younger age contains less odometer number (less driven time), which make people assume that the car has relatively better condition.
-
-On the other hand, features like size (of the car), paint color (of the car), and title status (of the car) show the least important when coms to predict the price of a used car.
 
 ## Conclusion
 
-As our primary goal is to identify the key drivers for used cars' prices, understand the relationship between each features to the target object, price, and their weight of influence to the target object, price, becomes an extreme crucial task.
 
-In order to do make a useful predictive model which can help to estimate the uses cars's prices, we cleaned the dataset, create and run multiple regression models with the same preprocessed dataset, train and cross-validate all models by tuning up their Polynomial degree and Hyper-parameters in order to achieve their best performances, and then evaluating them along with one additional model, Random Forest Regressor, which is built as an actual machine learning algorithm.
-
-Final decision to choose Random Forest Regressor as the best model, because it achieved the best scores in our evaluation system, despite its longest time consuming. Along with Permutation Importance feature, we concludes primary features, like Age (difference conversion from Year of the car) and Odometer (of the car) are the most important features, whereas other features like size (of the car), paint color (of the car), and title status (of the car) show the least important when coms to predict the price of a used car.
 
 ## Next step and Recommendations
 
 For future model improvement, do keep in mind that due to the large missing value and duplicate data in the dataset, multiple actions, like dropping data and filling data (based on certain inference correlated relation) was required to be complete in order to make the data to be useful for our model training. In addition, features like model, state may also has significant influences to the price of a used cars' prices, but they were dropped due to their ambiguous data value. That being said, in order to improve our model, more data preparation process is required. With more precise data, we can re-introduce the dropping features and re-train our model, which will lead to produce a better model with more accurate prediction results.
 
-For this project details (including dataset and images), please click [Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_11_Practical_Application_2).
+For this project details (including dataset and images), please click [Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_17_Practical_Application_3).
