@@ -63,7 +63,7 @@ Here is the list of factors/features that are involed in this analysis:
 
 21. y - has the client subscribed a term deposit? (binary: 'yes','no')
 
-**For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here]() for full Notebook.**
+**For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_17_Practical_Application_3/Module_17_prompt_III_JasonSU_v2_Final.ipynb) for full Notebook.**
 
 ## Finding
 According above model comparison chart, all models (Logistic Regression, KNeighbors, Decision Tree, and Support Vector Machines(SMV)) are surpass the baseline model (DummyClassifier), with higher Train Score (Accuracy) and Test Score (Accuracy).
@@ -86,11 +86,17 @@ By tuning our models with Grid Search (to compute the best Hyperparameter) and u
 
 With our selected **best model (Decision Tree)**, we then utilize one of its advantages, Tree Visualization, to help easy understand the interpret the decision split results. In addition, with the help of Grid Search tuning, our best model also demonstrates its ability of handling missing values (our dataset also contains some portion of "Unknown" data). 
 
+***Note: Please download the image from foldder "images" for optimal visulization***
+
+![Alt text](https://github.com/jasonszz/MLAI-2023/blob/main/Module_17_Practical_Application_3/images/decision_tree_graphivz.png)
+
 Furthermore, with the help of permutation importance feature, we are able to compute and visualize the importance of features that may directly influence the Target Value (Wether Clients Subscribed a Term Deposit). Here are the top 3 features that may impact the decision making to our target value.
 
 1. emp.var.rate
 2. euribor3m
 3. nr_employed
+
+![Alt text](https://github.com/jasonszz/MLAI-2023/blob/main/Module_17_Practical_Application_3/images/Plot_important_features_from_permutation_importance.png)
 
 However, due the high percentage of imbalanced data, despite the effort of building our best model, the outcome may seem to be lack of persuasiveness. 
 
