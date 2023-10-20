@@ -3,7 +3,7 @@ UC Berkeley Machine Learning and Artificial Intelligence 2023
 
 # Practical Application Assignment 3 (Module 17): Comparing Classifiers
 
-With a given dataset that contains almost 42K input variables information that related with a Portuguese banking institution direct marketing campaigns throught directly phone call to their potential clients, the goal of this project is to build different models (K Nearest Neighbor, Logistic Regression, Decision Trees, and Support Vector Machines) for this classification task (predict if a client will subscribe the deposit, not regarding which amount is retained), and compare each model's performance efficiency.
+With a given dataset (from UCI Machine Learning repository [Here](https://archive.ics.uci.edu/ml/datasets/bank+marketing)) that contains almost 42K input variables information that related with a Portuguese banking institution direct marketing campaigns throught directly phone call to their potential clients, the goal of this project is to build different models (K Nearest Neighbor, Logistic Regression, Decision Trees, and Support Vector Machines) for this classification task (predict if a client will subscribe the deposit, not regarding which amount is retained), and compare each model's performance efficiency.
 
 ## Overview
 
@@ -13,7 +13,7 @@ The analysis procedure will follow CRISP-DM Framework with standard process in t
 
 ## Business Understanding
 
-According to **Materials and Methods** section of the paper [Here](https://archive.ics.uci.edu/dataset/222/bank+marketing), this dataset collected is related to total 17 campaigns that occurred between May 2008 and November 2010, corresponding to a total of 79354 contacts made.
+According to **Materials and Methods** section of the paper [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_17_Practical_Application_3/data/CRISP-DM-BANK.pdf), this dataset collected is related to total 17 campaigns that occurred between May 2008 and November 2010, corresponding to a total of 79354 contacts made.
 
 According the to collected bank direct marketing data, the **Business Objective** here is to increase efficiency (success rate) of more productive campaign method, directed marketing campaigns, with offering attractive long-term deposit subscription, while saving the time and minimizing the cost by reducing the number of contacts that required to make.
 
@@ -66,15 +66,41 @@ Here is the list of factors/features that are involed in this analysis:
 **For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here]() for full Notebook.**
 
 ## Finding
+According above model comparison chart, all models (Logistic Regression, KNeighbors, Decision Tree, and Support Vector Machines(SMV)) are surpass the baseline model (DummyClassifier), with higher Train Score (Accuracy) and Test Score (Accuracy).
 
+However, although the high **Accuracy** scores from each model looks great, there may still be issue, such as overfitting concern. For example, Decision Tree computed to the "best score" in Train Score (Accuracy) (approximate 99%), but holds the relatively "low" Test Score (Accuracy) (approximate 85%), which indicates that this model contains overfitting issue. 
 
+In addition, according to the low **Recall** scores (all of them less than 0.5) from each model, another concern that raises up is that due to the current imbalanced dataset (as previously mentioned in the **EDA** phrase, as No (False or 0) as 88%, whereas Yes (True or 1) as 11%), all models (classifiers) have a high number of False negatives. Therefore, the model accuracy score calculation may not be useful, in term of basic (transitional) classification task processing, or model performance comparison and evaluation. 
+
+Therefore, the following step will be model improving and introducing another two more proper Performance Metric for this kind of dataset, called **ROC_AUC** and **F1 Score**. ROC_AUC is well-known and widely used evaluation metric that can be implemented to optimistically handle heavily imbalanced dataset only with few samples from the minority class, while F1 Score is also a great evaluation metric which can handle well uneven class distribution by providing the measure of the harmonic mean of precision and recall.
+
+ROC_AUC plots the False Positive Rate (FPR) versus the True Positive Rate (TPR), which allows visualizing how well the model's performance by identifying the class discrimination (in other words, distinguishing between the Postive classes and Negative classes). An ROC_AUC score is within a range from 0 to 1, as ideal model with score of 1, meaning the classifier can perfectly distinguish between all the Positive class points and the Negative class points. In general, a model with ROC_AUC score less than 0.5 indicates that the selected classifier may not work properly with the current dataset.
+
+According the above model comparison chart, by focusing on the F1 score and ROC_AUC score, **Decision Tree** has the best overall performance (as approximate 0.37 in F1 score and approximate 0.8 in ROC_AUC score), despite it is ranked 2nd shortest elapsed time consumption (in term of computational cost). 
 
 ## Conclusion
 
+Due to the provided dataset contain **high imbalanced data**, we cannot rely on a performance metric that merely focus on Accuracy score, when comes to model performance comparison. Although all of our built models (Logistic Regression vs KNeighbors vs Decision Tree vs SVM) have their limitation, their performances all surpassed the baseline model (DummyClassifier). 
 
+By tuning our models with Grid Search (to compute the best Hyperparameter) and utilizing the other two more proper Performance Metrics (**F1 score** and **ROC_AUC score**), we conclude that Decision Tree has the best overall performance, in term of best "accuracy" (best F1 score and ROC_AUC score) and relatively less **computation cost** (2nd shortest elapsed time consumption).
+
+With our selected **best model (Decision Tree)**, we then utilize one of its advantages, Tree Visualization, to help easy understand the interpret the decision split results. In addition, with the help of Grid Search tuning, our best model also demonstrates its ability of handling missing values (our dataset also contains some portion of "Unknown" data). 
+
+Furthermore, with the help of permutation importance feature, we are able to compute and visualize the importance of features that may directly influence the Target Value (Wether Clients Subscribed a Term Deposit). Here are the top 3 features that may impact the decision making to our target value.
+
+1. emp.var.rate
+2. euribor3m
+3. nr_employed
+
+However, due the high percentage of imbalanced data, despite the effort of building our best model, the outcome may seem to be lack of persuasiveness. 
 
 ## Next step and Recommendations
 
-For future model improvement, do keep in mind that due to the large missing value and duplicate data in the dataset, multiple actions, like dropping data and filling data (based on certain inference correlated relation) was required to be complete in order to make the data to be useful for our model training. In addition, features like model, state may also has significant influences to the price of a used cars' prices, but they were dropped due to their ambiguous data value. That being said, in order to improve our model, more data preparation process is required. With more precise data, we can re-introduce the dropping features and re-train our model, which will lead to produce a better model with more accurate prediction results.
+In order to achieve better performance and more meaningful result, here are some recommend steps:
+
+- Gather more data, for example, informations like clients' income vs spending
+- Data cleaning, such as identify "Unknown" data point
+- Utilize other technique, such as SMOTE, XGBoost, and Random Forest to handle class imbalance concern
+- Introduce Time Series analysis for feature group (like Day.of.Week) 
 
 For this project details (including dataset and images), please click [Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_17_Practical_Application_3).
