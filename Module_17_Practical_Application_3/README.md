@@ -13,7 +13,7 @@ The analysis procedure will follow CRISP-DM Framework with standard process in t
 
 ## Business Understanding
 
-According to **Materials and Methods** section of the paper [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_17_Practical_Application_3/data/CRISP-DM-BANK.pdf), this dataset collected is related to total 17 campaigns that occurred between May 2008 and November 2010, corresponding to a total of 79354 contacts made.
+According to **Materials and Methods** section of the paper [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_17_Practical_Application_3/CRISP-DM-BANK.pdf), this dataset collected is related to total 17 campaigns that occurred between May 2008 and November 2010, corresponding to a total of 79354 contacts made.
 
 According the to collected bank direct marketing data, the **Business Objective** here is to increase efficiency (success rate) of more productive campaign method, directed marketing campaigns, with offering attractive long-term deposit subscription, while saving the time and minimizing the cost by reducing the number of contacts that required to make.
 
