@@ -19,4 +19,4 @@ Another example with Coffee House, my analysis found that customers who were dri
 ## Next step and Recommendations
 Customers' age, occupation, marital status, and income could also influence customers' decision making, but will need further investigation to define the impact as an individual factor or as a group factors.
 
-Project link: https://github.com/jasonszz/MLAI-2023/blob/main/Module_5_Practical_Application_1_prompt-JasonSU_v5.ipynb
+Project link [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_5_Practical_Application_1/Module_5_Practical_Application_1_prompt-JasonSU_v5.ipynb)
