@@ -85,7 +85,7 @@ This project will be utilizing CRISP-DM process model methodology, which includi
 - Evaluation
 - Deployment (not currently, but future plan) 
 
-***For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_20_Capstone_Project_Initial_Report_and_EDA/Module_20_Capstone_Project_Initial_Report_and_EDA_JasonSU_v2_Final.ipynb) for full Notebook.***
+***For details about Exploratory Data Analysis (EDA), Data Preparation, Modeling, and Evaluation, please click [Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_20_Capstone_Project_Initial_Report_and_EDA/Module_20_Capstone_Project_Initial_Report_and_EDA_JasonSU_v2_Final.ipynb) for the full Jupyter Notebook.***
 
 ## Results
 According to the provided dataset contain **partial balanced data**, we cannot rely on a performance metric that merely focus on Accuracy score, when comes to model performance comparison. Although all of our built models (Logistic Regression vs KNeighbors vs Decision Tree vs SVM vs Random Fores vs XGBClassifier) have their limitation, their performances all surpassed the baseline model (DummyClassifier). 
