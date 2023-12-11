@@ -114,7 +114,7 @@ In order to achieve better performance and more meaningful result, here are some
 - Utilize other technique for high dimensionality reduction (such as PCA or k-means clustering)
 
 ## Outline of project
-For details (including dataset and images) of this project, please click **[Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_20_Capstone_Project_Initial_Report_and_EDA)**.
+For details (including dataset and images) of this project, please click **[Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_24_Capstone_Project_Final_Report)**.
 
 For the full Jupyter Notebook of this project, please click **[Here](https://github.com/jasonszz/MLAI-2023/blob/main/Module_20_Capstone_Project_Initial_Report_and_EDA/Module_20_Capstone_Project_Initial_Report_and_EDA_JasonSU_v2_Final.ipynb)**.
 
