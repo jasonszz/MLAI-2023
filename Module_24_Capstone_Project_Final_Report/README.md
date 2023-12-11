@@ -4,7 +4,7 @@
 Jason Su
 
 ## Executive summary
-From a business perspective, we are tasked with identifying key drivers for what would make a Customer to accept the coupon while driving throught a town. In the CRISP-DM overview **[Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_20_Capstone_Project_Initial_Report_and_EDA/CRISP-DM%20Framework)**, we are asked to convert this business framing to a data problem definition. Using a few sentences, reframe the task as a data task with the appropriate technical vocabulary.
+From a business perspective, we are tasked with identifying key drivers for what would make a Customer to accept the coupon while driving throught a town. In the CRISP-DM overview **[Here](https://github.com/jasonszz/MLAI-2023/tree/main/Module_24_Capstone_Project_Final_Report/CRISP-DM%20Framework)**, we are asked to convert this business framing to a data problem definition. Using a few sentences, reframe the task as a data task with the appropriate technical vocabulary.
 
 In current marketing advertising business, coupon distribution has been one of the effective ways to engage customers with business products or service promotion, whether is for preserving current customers or attracting new customers.
 
